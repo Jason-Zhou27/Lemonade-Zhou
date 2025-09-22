@@ -1,3 +1,6 @@
+import java.util.Scanner;
+
+
 public class Inventory {
 	double money = 100.00;
 	double sugarPrice = 0.15;
