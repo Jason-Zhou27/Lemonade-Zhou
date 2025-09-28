@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 
 public class Inventory {
+	double moneySpent;
 	double money = 100.00;
 	double sugarPrice = 0.15;
 	double lemonPrice = 0.20;
@@ -16,12 +17,19 @@ public class Inventory {
 	System.out.print("You have " + money + "dollars");
 	System.out.print("Enter # of lemons: ");
 	int buyLemons = Integer.parseInt(sc.nextLine());
+	System.out.println(checkTransaction(money, lemons, lemonPrice));
 	System.out.print("Enter # of sugar: ");
 	int buySugar = Integer.parseInt(sc.nextLine());
+	System.out.println(checkTransaction(money, sugar, sugarPrice));
 	System.out.print("Enter # of ice:");
 	int buyIce = Integer.parseInt(sc.nextLine());
+	System.out.println(checkTransaction(money, ice, icePrice));
 	System.out.print("Enter # of cups: ");
 	int buyCups = Integer.parseInt(sc.nextLine());
+	System.out.println(checkTransaction(money, cups, cupPrice));
+
+	updateInventory();
+	updateMoney();
 		
 	public void updateInventory() {
 		lemons+=buyLemons;
@@ -29,4 +37,23 @@ public class Inventory {
 		ice+=buyIce;
 		cup+=buyCups;
 	}
+	public void updateMoney(){
+		
+	}
+	public String checkTransaction(double money, int item, double itemPrice){
+		moneySpent = lemons*lemonPrice + sugar*sugarPrice + ice*icePrice + cups*cupPrice;
+		money = money - moneySpent;
+		if (money==0){
+			return "You have no money left";
+		} 
+		else if (money>=0){
+			return "You have " + money + "dollars left";
+		} 
+		else {
+			undoTransaction();
+			return "transaction invalid";
+		}
+
+	}
+	
 }
