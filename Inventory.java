@@ -38,7 +38,8 @@ public class Inventory {
 		cup+=buyCups;
 	}
 	public void updateMoney(){
-		
+		moneySpent = lemons*lemonPrice + sugar*sugarPrice + ice*icePrice + cups*cupPrice;
+		money = money - moneySpent;
 	}
 	public String checkTransaction(double money, int item, double itemPrice){
 		moneySpent = lemons*lemonPrice + sugar*sugarPrice + ice*icePrice + cups*cupPrice;
@@ -54,6 +55,16 @@ public class Inventory {
 			return "transaction invalid";
 		}
 
+	}
+	public void undoTransaction(){
+		money = money + moneySpent;
+		buyLemons = 0;
+		buySugar = 0;
+		buyIce = 0;
+		buyCups = 0;
+		
+		
+		
 	}
 	
 }
