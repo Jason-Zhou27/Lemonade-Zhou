@@ -1,7 +1,7 @@
 public class Main {
 	public static void main(String[] args) {
 	
-	Lemonade l1 = new LemonadeStand();
+	Lemonade_Stand l1 = new Lemonade_Stand();
 		l1.start();
 	}
 }

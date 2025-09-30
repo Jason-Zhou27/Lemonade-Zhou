@@ -1,16 +1,25 @@
 public class Day_Efficacy {
 	double totalEfficacy;
-	//Lemons and Sugar declared within the Inventory class
-	double lsRatio = lemons/sugar;
-	int randomWeather = (int)(Math.random()*7);
-	double weatherMultiplier = calcWeatherMultiplier(random);
-	String WeatherName = detWeatherName(random);
-	double recipeMultiplier = recipeEfficacy(lsRatio);
-	int customers = calcCustomers(weatherMultiplier);
-	double custMultiplier = calcCustMultiplier(customers);
+	double lsRatio;
+	int randomWeather;
+	double weatherMultiplier;
+	String WeatherName;
+	double recipeMultiplier;
+	int customers;
+	double custMultiplier;
+	public Day_Efficacy(){
+		lsRatio = lRec/sRec;
+		randomWeather = (int)(Math.random()*7);
+		weatherMultiplier = calcWeatherMultiplier(random);
+		WeatherName = detWeatherName(random);
+		recipeMultiplier = recipeEfficacy(lsRatio);
+		customers = calcCustomers(weatherMultiplier);
+		custMultiplier = calcCustMultiplier(customers);
+		totalEfficacy = 1.00*custMultiplier*recipeMultiplier*weatherMultiplier;
+	}
 	
 	public double calcWeatherMultiplier(int randomWeather) {
-		double[] weatherMultipliers = {0.70, 0.75, 0.80, 0.85. 0.90, 0.95, 1.00};
+		double[] weatherMultipliers = {0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.00};
 		return weatherMultipliers[randomWeather];
 	}
 	public String detWeatherName(int randomWeather) {
@@ -20,14 +29,13 @@ public class Day_Efficacy {
 	public double recipeEfficacy(double lsRatio){
 		double idealLSRatio = 1.67;
 		double percDifRatio = (Math.abs(idealLSRatio-lsRatio)/idealLSRatio);
-		return (1-percDifRatio);
+		return (1.00-percDifRatio);
 	}
 	public int calcCustomers(double weatherMultiplier){
 		int arbCustomers = (int)(Math.random()*50+30);
 		return (int)(arbCustomers*weatherMultiplier);
 	}
-	public double custMultiplier(int customers){
+	public double calcCustMultiplier(int customers){
 		return (double)(customers/50);
 	}
-	totalEfficacy = 1.00*custMultiplier*recipeMultiplier*weatherMultiplier;
 }
